@@ -8,3 +8,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.grid {
+    background-color: black;
+    height: 50px;
+    width: 50px;
+}
