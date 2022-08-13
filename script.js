@@ -8,8 +8,6 @@ const createGrids = () => {
             let grid = document.createElement("div");
             grid.classList.add("grid");
             grid.setAttribute("id", `grid-${i}-${j}`);
-            console.log(grid);
-            console.log(gridContainer)
             gridContainer.append(grid);
         }
     }
