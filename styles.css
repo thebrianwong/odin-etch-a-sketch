@@ -13,7 +13,7 @@
 .grid-container {
     justify-content: center;
     align-content: center;
-    height: 680px;
+    height: 100vh;
     width: 680px;
 }
 
