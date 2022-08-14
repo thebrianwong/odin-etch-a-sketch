@@ -1,3 +1,6 @@
+button {
+    margin: 50px 0;
+}
 
 .container,
 .grid-container {
@@ -6,13 +9,14 @@
 }
 
 .container {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .grid-container {
     justify-content: center;
-    align-content: center;
+    align-content: flex-start;
     height: 95vh;
     width: 680px;
 }
