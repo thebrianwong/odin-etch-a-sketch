@@ -17,7 +17,7 @@ button {
 .grid-container {
     justify-content: center;
     align-content: flex-start;
-    height: 95vh;
+    /* height: 95vh; */
     width: 680px;
 }
 
