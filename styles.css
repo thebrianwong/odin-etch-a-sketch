@@ -19,7 +19,7 @@ button {
     align-content: flex-start;
     /* height: 95vh; */
     /* Width defaults to 672px. Grid of 40px plus left border of 1 px and right border of 1 px all multiplied by 16 is 672px. */
-    width: 1000px;
+    width: 672px;
 }
 
 .grid {
