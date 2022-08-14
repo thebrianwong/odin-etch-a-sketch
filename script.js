@@ -8,6 +8,7 @@ const createGrids = () => {
             grid.classList.add("grid");
             grid.setAttribute("id", `grid-${i}-${j}`);
             hoverGrid(grid);
+            adjustDimensions(grid);
             gridContainer.append(grid);
         }
     }
@@ -17,6 +18,12 @@ const hoverGrid = (element) => {
     element.addEventListener("mouseover", () => {
         element.classList.add("hover");
     })
+}
+
+const adjustDimensions = (element) => {
+    let newDimensions = 672 / gridNumber - 2;
+    element.style.height = `${newDimensions}px`;
+    element.style.width = `${newDimensions}px`;
 }
 
 const gridButton = () => {
