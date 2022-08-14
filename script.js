@@ -90,9 +90,25 @@ const addColorModeButtons = () => {
         button.addEventListener("click", () => {
             let newColorMode = button.getAttribute("id");
             colorMode = newColorMode;
+            // if (colorMode === "single") {
+            //     addColorOptions();
+            // } else {
+            //     removeColorOptions();
+            // }
             removeGrids();
             createGrids();
         })
+    })
+}
+
+const addColorOptions = () => {
+    const colorContainer = document.querySelector(".color-container");
+    const genericColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "black"]
+    genericColors.forEach((color) => {
+        const colorOption = document.createElement("div");
+        colorOption.classList.add("grid");
+        colorOption.style.backgroundColor = color;
+        colorContainer.append(colorOption);
     })
 }
 
@@ -101,3 +117,5 @@ createGrids();
 changeGrid();
 resetGrid();
 addColorModeButtons();
+
+addColorOptions();

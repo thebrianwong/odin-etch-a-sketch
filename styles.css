@@ -1,8 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .container,
 .button-container,
 .grid-buttons,
 .color-buttons,
-.grid-container {
+.grid-container,
+.color-container {
     display: flex;
     flex-wrap: wrap;
 }
@@ -16,7 +22,7 @@
 .button-container {
     justify-content: center;
     align-content: flex-start;
-    margin: 50px 0;
+    margin: 25px 0;
     width: 500px;
     gap: 25px;
 }
@@ -32,6 +38,11 @@
     /* height: 95vh; */
     /* Width defaults to 672px. Grid of 40px plus left border of 1 px and right border of 1 px all multiplied by 16 is 672px. */
     width: 672px;
+}
+
+.color-container {
+    margin: 25px 0;
+    gap: 25px;
 }
 
 .grid {
