@@ -48,10 +48,18 @@ const adjustDimensions = (element) => {
     element.style.width = `${newDimensions}px`;
 }
 
-const gridButton = () => {
-    const button = document.querySelector("button");
+const changeGrid = () => {
+    const button = document.querySelector(".change-number");
     button.addEventListener("click", () => {
         askForGrids();
+        removeGrids();
+        createGrids();
+    })
+}
+
+const resetGrid = () => {
+    const button = document.querySelector(".reset");
+    button.addEventListener("click", () => {
         removeGrids();
         createGrids();
     })
@@ -71,4 +79,5 @@ const removeGrids = () => {
 }
 
 createGrids();
-gridButton();
+changeGrid();
+resetGrid();
