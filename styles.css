@@ -1,9 +1,7 @@
-button {
-    margin: 50px 0;
-}
-
 .container,
 .button-container,
+.grid-buttons,
+.color-buttons,
 .grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -16,6 +14,15 @@ button {
 }
 
 .button-container {
+    justify-content: center;
+    align-content: flex-start;
+    margin: 50px 0;
+    width: 500px;
+    gap: 25px;
+}
+
+.grid-buttons,
+.color-buttons {
     gap: 25px;
 }
 
