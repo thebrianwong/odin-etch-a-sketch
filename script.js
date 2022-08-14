@@ -4,7 +4,7 @@ const createGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
     for (let i = 1; i <= gridNumber; i++) {
         for (let j = 1; j <= gridNumber; j++) {
-            let grid = document.createElement("div");
+            const grid = document.createElement("div");
             grid.classList.add("grid");
             grid.setAttribute("id", `grid-${i}-${j}`);
             hoverGrid(grid);
@@ -20,7 +20,7 @@ const hoverGrid = (element) => {
 }
 
 const gridButton = () => {
-    let button = document.querySelector("button");
+    const button = document.querySelector("button");
     button.addEventListener("click", () => {
         askForGrids();
         removeGrids();
