@@ -78,6 +78,18 @@ const removeGrids = () => {
     gridContainer.innerHTML = "";
 }
 
+const addColorModeButtons = () => {
+    let colorModeButtons = document.querySelectorAll(".color-mode");
+    colorModeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            let newColorMode = button.getAttribute("id");
+            colorMode = newColorMode;
+        })
+    })
+}
+
+
 createGrids();
 changeGrid();
 resetGrid();
+addColorModeButtons();
