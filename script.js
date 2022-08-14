@@ -1,4 +1,6 @@
 let gridNumber = 16;
+let gridContainerWidth = 672;
+let gridBorderWidth = 2;
 
 const createGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
@@ -21,7 +23,7 @@ const hoverGrid = (element) => {
 }
 
 const adjustDimensions = (element) => {
-    let newDimensions = 672 / gridNumber - 2;
+    let newDimensions = gridContainerWidth / gridNumber - gridBorderWidth;
     element.style.height = `${newDimensions}px`;
     element.style.width = `${newDimensions}px`;
 }
