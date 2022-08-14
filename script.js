@@ -23,6 +23,7 @@ const gridButton = () => {
     let button = document.querySelector("button");
     button.addEventListener("click", () => {
         askForGrids();
+        removeGrids();
         createGrids();
     })
 }
@@ -33,6 +34,11 @@ const askForGrids = () => {
         newGridNumber = prompt("How many grids per side do you want? From 1 to 100.");
     } while (newGridNumber < 1 || newGridNumber > 100)
     gridNumber = newGridNumber;
+}
+
+const removeGrids = () => {
+    const gridContainer = document.querySelector(".grid-container");
+    gridContainer.innerHTML = "";
 }
 
 createGrids();
