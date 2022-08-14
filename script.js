@@ -17,8 +17,21 @@ const createGrids = () => {
 }
 
 const hoverGrid = (element) => {
+    // Single color
+    // element.addEventListener("mouseover", () => {
+    //     element.classList.add("hover");
+    // })
+    // Monochrome
+    // element.addEventListener("mouseover", () => {
+    //     let randomColor = Math.floor(Math.random() * 255);
+    //     element.style.backgroundColor = `rgb(${randomColor}, ${randomColor}, ${randomColor})`;
+    // })
+    // Random color
     element.addEventListener("mouseover", () => {
-        element.classList.add("hover");
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
     })
 }
 
