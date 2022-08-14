@@ -8,9 +8,16 @@ const createGrids = () => {
             let grid = document.createElement("div");
             grid.classList.add("grid");
             grid.setAttribute("id", `grid-${i}-${j}`);
+            hoverGrid(grid);
             gridContainer.append(grid);
         }
     }
+}
+
+const hoverGrid = (element) => {
+    element.addEventListener("mouseover", () => {
+        element.classList.add("hover");
+    })
 }
 
 createGrids();
