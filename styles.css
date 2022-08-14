@@ -18,8 +18,9 @@
 }
 
 .grid {
-    background-color: lightgray;
+    background-color: whitesmoke;
     height: 40px;
     width: 40px;
-    margin: 1px;
+    /* margin: 1px; */
+    border: solid black 1px;
 }
