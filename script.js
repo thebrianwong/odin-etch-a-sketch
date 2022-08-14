@@ -1,6 +1,7 @@
 let gridNumber = 16;
 let gridContainerWidth = 672;
 let gridBorderWidth = 2;
+let colorMode = "single";
 
 const createGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
@@ -18,21 +19,27 @@ const createGrids = () => {
 
 const hoverGrid = (element) => {
     // Single color
-    // element.addEventListener("mouseover", () => {
-    //     element.classList.add("hover");
-    // })
+    element.addEventListener("mouseover", () => {
+        element.classList.add("hover");
+    })
     // Monochrome
     // element.addEventListener("mouseover", () => {
     //     let randomColor = Math.floor(Math.random() * 255);
     //     element.style.backgroundColor = `rgb(${randomColor}, ${randomColor}, ${randomColor})`;
     // })
     // Random color
-    element.addEventListener("mouseover", () => {
-        let red = Math.floor(Math.random() * 255);
-        let green = Math.floor(Math.random() * 255);
-        let blue = Math.floor(Math.random() * 255);
-        element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-    })
+    // element.addEventListener("mouseover", () => {
+    //     let red = Math.floor(Math.random() * 255);
+    //     let green = Math.floor(Math.random() * 255);
+    //     let blue = Math.floor(Math.random() * 255);
+    //     element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    // })
+    // 10% blacker
+    // let currentColor = 255;
+    // element.addEventListener("mouseover", () => {
+    //     currentColor -= 25.5;
+    //     element.style.backgroundColor = `rgb(${currentColor}, ${currentColor}, ${currentColor})`;
+    // })
 }
 
 const adjustDimensions = (element) => {
