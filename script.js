@@ -91,9 +91,9 @@ const addColorModeButtons = () => {
             let newColorMode = button.getAttribute("id");
             colorMode = newColorMode;
             // if (colorMode === "free-draw") {
-            //     addColorOptions();
+            //     showColorOptions();
             // } else {
-            //     removeColorOptions();
+            //     hideColorOptions();
             // }
             removeGrids();
             createGrids();
@@ -126,6 +126,20 @@ const changeColor = (newColor) => {
     })
 }
 
+const toggleColorOptions = () => {
+    const colorContainer = document.querySelector(".color-container");
+    const freeDrawButton = document.querySelector("#free-draw");
+    freeDrawButton.addEventListener("click", () => {
+        colorContainer.style.display = "flex";
+    })
+    const nonFreeDrawButtons = document.querySelectorAll(".no-options");
+    nonFreeDrawButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            colorContainer.style.display = "none";
+        })
+    })
+}
+
 
 createGrids();
 changeGrid();
@@ -133,3 +147,4 @@ resetGrid();
 addColorModeButtons();
 
 addColorOptions();
+toggleColorOptions();
