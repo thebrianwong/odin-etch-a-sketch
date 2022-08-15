@@ -106,9 +106,23 @@ const addColorOptions = () => {
     const genericColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "black"]
     genericColors.forEach((color) => {
         const colorOption = document.createElement("div");
-        colorOption.classList.add("grid");
+        colorOption.classList.add("special-grid");
         colorOption.style.backgroundColor = color;
+        colorOption.addEventListener("click", () => {
+            changeColor(color);
+        })
+        console.log(color)
         colorContainer.append(colorOption);
+    })
+}
+
+const changeColor = (newColor) => {
+    const grids = document.querySelectorAll(".grid");
+    grids.forEach((grid) => {
+        grid.removeEventListener("mouseover", hoverGrid)
+        grid.addEventListener("mouseover", () => {
+            grid.style.backgroundColor = newColor;
+        })
     })
 }
 
