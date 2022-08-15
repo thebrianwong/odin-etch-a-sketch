@@ -1,7 +1,7 @@
 let gridNumber = 16;
 let gridContainerWidth = 672;
 let gridBorderWidth = 2;
-let colorMode = "single";
+let colorMode = "free-draw";
 
 const createGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
@@ -19,7 +19,7 @@ const createGrids = () => {
 
 const hoverGrid = (element) => {
     switch (colorMode) {
-        case "single":
+        case "free-draw":
         default:
             element.addEventListener("mouseover", () => {
                 element.classList.add("hover");
@@ -90,7 +90,7 @@ const addColorModeButtons = () => {
         button.addEventListener("click", () => {
             let newColorMode = button.getAttribute("id");
             colorMode = newColorMode;
-            // if (colorMode === "single") {
+            // if (colorMode === "free-draw") {
             //     addColorOptions();
             // } else {
             //     removeColorOptions();
