@@ -2,6 +2,7 @@ let gridNumber = 16;
 let gridContainerWidth = 672;
 let gridBorderWidth = 2;
 let colorMode = "free-draw";
+let autoMode;
 
 const createGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
@@ -44,7 +45,11 @@ const hoverGrid = (element) => {
             element.addEventListener("mouseover", () => {
                 currentColor -= 25.5;
                 element.style.backgroundColor = `rgb(${currentColor}, ${currentColor}, ${currentColor})`;
-            })            
+            })
+            break;
+        case "auto-random":
+            autoRandom("on");
+            break;
     }
 }
 
@@ -95,6 +100,9 @@ const addColorModeButtons = () => {
             // } else {
             //     hideColorOptions();
             // }
+            if (newColorMode !== "auto-random"){
+                autoRandom("off")
+            }
             removeGrids();
             createGrids();
         })
@@ -140,6 +148,15 @@ const toggleColorOptions = () => {
     })
 }
 
+const changeRandomColors = () => {
+    const grids = document.querySelectorAll(".grid");
+    grids.forEach((grid) => {
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        grid.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    })
+}
 
 createGrids();
 changeGrid();
@@ -148,3 +165,15 @@ addColorModeButtons();
 
 addColorOptions();
 toggleColorOptions();
+
+const autoRandom = (toggle) => {
+    // let autotest;
+    if (toggle === "on") {
+        autoMode = setInterval(changeRandomColors, 1000)
+        console.log(autoMode)
+    } else {
+        console.log("BLBLBLB")
+        clearInterval(autoMode);
+        autoMode = null;
+    }   
+}
