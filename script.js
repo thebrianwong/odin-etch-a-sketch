@@ -103,7 +103,7 @@ const addColorModeButtons = () => {
 
 const addColorOptions = () => {
     const colorContainer = document.querySelector(".color-container");
-    const genericColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "black"]
+    const genericColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "black", "white"]
     genericColors.forEach((color) => {
         const colorOption = document.createElement("div");
         colorOption.classList.add("special-grid");
