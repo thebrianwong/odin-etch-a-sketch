@@ -47,7 +47,7 @@ body {
 
 .grid,
 .special-grid {
-    background-color: whitesmoke;
+    background-color: white;
     /* Height and width start at 40px but change via inline styling when setting a new number of grids. */
     height: 40px;
     width: 40px;
