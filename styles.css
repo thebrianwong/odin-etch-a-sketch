@@ -37,7 +37,6 @@ body {
 .grid-container {
     justify-content: center;
     align-content: flex-start;
-    /* height: 95vh; */
     /* Width defaults to 672px. Grid of 40px plus left border of 1 px and right border of 1 px all multiplied by 16 is 672px. */
     width: 672px;
 }
@@ -53,7 +52,6 @@ body {
     /* Height and width start at 40px but change via inline styling when setting a new number of grids. */
     height: 40px;
     width: 40px;
-    /* margin: 1px; */
     border: solid black 1px;
 }
 
