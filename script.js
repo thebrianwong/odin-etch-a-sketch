@@ -31,10 +31,7 @@ const hoverGrid = (element) => {
             break;
         case "random":
             element.addEventListener("mouseover", () => {
-                let red = Math.floor(Math.random() * 255);
-                let green = Math.floor(Math.random() * 255);
-                let blue = Math.floor(Math.random() * 255);
-                element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+                createRandomColors(element);
             })
             break;
         case "monochrome":
@@ -156,12 +153,17 @@ const toggleColorOptions = () => {
 const changeRandomColors = () => {
     const grids = document.querySelectorAll(".grid");
     grids.forEach((grid) => {
-        let red = Math.floor(Math.random() * 255);
-        let green = Math.floor(Math.random() * 255);
-        let blue = Math.floor(Math.random() * 255);
-        grid.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        createRandomColors(grid);
     })
 }
+
+const createRandomColors = (grid) => {
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
+    grid.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+}
+
 
 createGrids();
 changeGrid();
