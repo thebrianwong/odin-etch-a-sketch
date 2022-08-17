@@ -1,6 +1,6 @@
 let gridNumber = 16;
-let gridContainerWidth = 672;
-let gridBorderWidth = 2;
+const gridContainerWidth = 672;
+const gridBorderWidth = 2;
 let colorMode = "free-draw";
 let autoMode;
 
