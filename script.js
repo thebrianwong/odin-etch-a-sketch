@@ -16,6 +16,9 @@ const createGrids = () => {
             gridContainer.append(grid);
         }
     }
+    if (colorMode === "auto-random") {
+        autoRandom("on")
+    }
 }
 
 const hoverGrid = (element) => {
@@ -48,7 +51,7 @@ const hoverGrid = (element) => {
             })
             break;
         case "auto-random":
-            autoRandom("on");
+            // autoRandom("on");
             break;
     }
 }
@@ -94,17 +97,19 @@ const addColorModeButtons = () => {
     colorModeButtons.forEach((button) => {
         button.addEventListener("click", () => {
             let newColorMode = button.getAttribute("id");
-            colorMode = newColorMode;
-            // if (colorMode === "free-draw") {
-            //     showColorOptions();
-            // } else {
-            //     hideColorOptions();
-            // }
-            if (newColorMode !== "auto-random"){
-                autoRandom("off")
+            if (colorMode !== newColorMode) {
+                colorMode = newColorMode;
+                // if (colorMode === "free-draw") {
+                //     showColorOptions();
+                // } else {
+                //     hideColorOptions();
+                // }
+                if (newColorMode !== "auto-random"){
+                    autoRandom("off")
+                }
+                removeGrids();
+                createGrids();
             }
-            removeGrids();
-            createGrids();
         })
     })
 }
@@ -168,10 +173,10 @@ toggleColorOptions();
 
 const autoRandom = (toggle) => {
     // let autotest;
-    if (toggle === "on") {
+    if (toggle === "on" && !autoMode && autoMode !== "auto-random") {
         autoMode = setInterval(changeRandomColors, 1000)
         console.log(autoMode)
-    } else {
+    } else if (toggle === "off") {
         console.log("BLBLBLB")
         clearInterval(autoMode);
         autoMode = null;
