@@ -48,6 +48,7 @@ const hoverGrid = (element) => {
             })
             break;
         case "auto-random":
+            changeRandomColors();
             break;
     }
 }
