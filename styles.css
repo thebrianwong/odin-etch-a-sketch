@@ -30,6 +30,7 @@ body {
 
 .grid-buttons,
 .color-buttons {
+    justify-content: center;
     gap: 25px;
 }
 
