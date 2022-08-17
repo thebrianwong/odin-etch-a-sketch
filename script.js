@@ -48,7 +48,6 @@ const hoverGrid = (element) => {
             })
             break;
         case "auto-random":
-            // autoRandom("on");
             break;
     }
 }
@@ -96,11 +95,6 @@ const addColorModeButtons = () => {
             let newColorMode = button.getAttribute("id");
             if (colorMode !== newColorMode) {
                 colorMode = newColorMode;
-                // if (colorMode === "free-draw") {
-                //     showColorOptions();
-                // } else {
-                //     hideColorOptions();
-                // }
                 if (newColorMode !== "auto-random"){
                     autoRandom("off")
                 }
@@ -121,7 +115,6 @@ const addColorOptions = () => {
         colorOption.addEventListener("click", () => {
             changeColor(color);
         })
-        console.log(color)
         colorContainer.append(colorOption);
     })
 }
