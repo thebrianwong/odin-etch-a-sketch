@@ -172,13 +172,9 @@ addColorOptions();
 toggleColorOptions();
 
 const autoRandom = (toggle) => {
-    // let autotest;
-    if (toggle === "on" && !autoMode && autoMode !== "auto-random") {
+    if (toggle === "on") {
         autoMode = setInterval(changeRandomColors, 1000)
-        console.log(autoMode)
     } else if (toggle === "off") {
-        console.log("BLBLBLB")
         clearInterval(autoMode);
-        autoMode = null;
     }   
 }
