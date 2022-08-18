@@ -188,8 +188,12 @@ const autoMove = () => {
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
                 // activeGrid.textContent = activeGrid.getAttribute("id");
+                // console.log(`#grid-${i}-${j}`)
                 // turn on interval
-                autoMode = setInterval(snakingGrid(activeGrid), 500); 
+                // autoMode = setInterval(snakingGrid(activeGrid), (i * gridNumber + j) * 5000); 
+                autoMode = snakingGrid(activeGrid, i, j);
+                // activeGrid.style.backgroundColor = "#191919";
+                // console.log(autoMode)
             }
         } else {
             for (let j = gridNumber; j > 0; j--) {
@@ -198,12 +202,24 @@ const autoMove = () => {
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
                 // activeGrid.textContent = activeGrid.getAttribute("id");
-                autoMode = setInterval(snakingGrid(activeGrid), 500); 
+                // console.log(`#grid-${i}-${j}`)
+                // autoMode = setInterval(snakingGrid(activeGrid), (i * gridNumber + j) * 5000);
+                autoMode = snakingGrid(activeGrid, i, j);
+                // activeGrid.style.backgroundColor = "#191919";
+                // console.log(autoMode)
             }
         }
     }
 }
 
-const snakingGrid = (grid) => {
-    grid.style.backgroundColor = "#191919";
+const snakingGrid = (grid, row, column) => {
+    // grid.style.backgroundColor = "#191919";
+    autoMode = setInterval(snakingColor = () => {
+        grid.style.backgroundColor = "#191919";
+    }, (row * gridNumber + column) * 500);
 }
+
+// const snakingColor = (grid) => {
+//     grid.style.backgroundColor = "#191919";
+//     // console.log("test")
+// }
