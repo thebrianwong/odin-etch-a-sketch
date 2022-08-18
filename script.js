@@ -16,9 +16,6 @@ const createGrids = () => {
             gridContainer.append(grid);
         }
     }
-    // if (colorMode === "auto-random") {
-    //     autoRandom("on")
-    // }
 }
 
 const hoverGrid = (element) => {
