@@ -47,6 +47,8 @@ const hoverGrid = (element) => {
         case "auto-random":
             changeRandomColors();
             break;
+        case "auto-move":
+            break;
     }
 }
 
@@ -100,6 +102,8 @@ const addColorModeButtons = () => {
                 createGrids();
                 if (colorMode === "auto-random") {
                     autoRandom("on")
+                } else if (colorMode === "auto-move")  {
+                    console.log("test")
                 }
             }
         })
@@ -173,4 +177,33 @@ const autoRandom = (toggle) => {
     } else if (toggle === "off") {
         clearInterval(autoMode);
     }   
+}
+
+const autoMove = () => {
+    for (let i = 1; i <= gridNumber; i++) {
+        if  (i % 2 !== 0) {
+            for (let j = 1; j <= gridNumber; j++) {
+                if (autoMode !== null) {
+                    clearInterval(autoMode);
+                }
+                const activeGrid = document.querySelector(`#grid-${i}-${j}`);
+                // activeGrid.textContent = activeGrid.getAttribute("id");
+                // turn on interval
+                autoMode = setInterval(snakingGrid(activeGrid), 500); 
+            }
+        } else {
+            for (let j = gridNumber; j > 0; j--) {
+                if (autoMode !== null) {
+                    clearInterval(autoMode);
+                }
+                const activeGrid = document.querySelector(`#grid-${i}-${j}`);
+                // activeGrid.textContent = activeGrid.getAttribute("id");
+                autoMode = setInterval(snakingGrid(activeGrid), 500); 
+            }
+        }
+    }
+}
+
+const snakingGrid = (grid) => {
+    grid.style.backgroundColor = "#191919";
 }
