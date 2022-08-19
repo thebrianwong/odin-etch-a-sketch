@@ -78,7 +78,7 @@ const resetGrid = () => {
 const askForGrids = () => {
     let newGridNumber = 0;
     do {
-        newGridNumber = prompt("How many grids per side do you want? From 1 to 100.");
+        newGridNumber = Number(prompt("How many grids per side do you want? From 1 to 100."));
     } while (newGridNumber < 1 || newGridNumber > 100)
     gridNumber = newGridNumber;
 }
@@ -202,7 +202,7 @@ const autoMove = () => {
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
                 // activeGrid.textContent = activeGrid.getAttribute("id");
-                // console.log(`#grid-${i}-${j}`)
+                console.log(`#grid-${i}-${j}`)
                 // autoMode = setInterval(snakingGrid(activeGrid), (i * gridNumber + j) * 5000);
                 autoMode = snakingGrid(activeGrid, i, j);
                 // activeGrid.style.backgroundColor = "#191919";
@@ -214,9 +214,15 @@ const autoMove = () => {
 
 const snakingGrid = (grid, row, column) => {
     // grid.style.backgroundColor = "#191919";
-    autoMode = setInterval(snakingColor = () => {
-        grid.style.backgroundColor = "#191919";
-    }, (row * gridNumber + column) * 500);
+    if (row % 2 !== 0) {
+        autoMode = setInterval(snakingColor = () => {
+            grid.style.backgroundColor = "#191919";
+        }, ((row - 1) * gridNumber + column) * 100);
+    } else {
+        autoMode = setInterval(snakingColor = () => {
+            grid.style.backgroundColor = "#191919";
+        }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 100);
+    }
 }
 
 // const snakingColor = (grid) => {
