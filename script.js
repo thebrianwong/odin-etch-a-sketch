@@ -202,7 +202,7 @@ const autoMove = () => {
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
                 // activeGrid.textContent = activeGrid.getAttribute("id");
-                console.log(`#grid-${i}-${j}`)
+                // console.log(`#grid-${i}-${j}`)
                 // autoMode = setInterval(snakingGrid(activeGrid), (i * gridNumber + j) * 5000);
                 autoMode = snakingGrid(activeGrid, i, j);
                 // activeGrid.style.backgroundColor = "#191919";
@@ -215,13 +215,19 @@ const autoMove = () => {
 const snakingGrid = (grid, row, column) => {
     // grid.style.backgroundColor = "#191919";
     if (row % 2 !== 0) {
-        autoMode = setInterval(snakingColor = () => {
+        autoMode = setTimeout(snakingColor = () => {
             grid.style.backgroundColor = "#191919";
-        }, ((row - 1) * gridNumber + column) * 100);
+        }, ((row - 1) * gridNumber + column) * 50);
+        const offAutoMode = setTimeout(offSnakingColor = () => {
+            grid.style.backgroundColor = "white";
+        }, ((row - 1) * gridNumber + column) * 50 + 50);
     } else {
-        autoMode = setInterval(snakingColor = () => {
+        autoMode = setTimeout(snakingColor = () => {
             grid.style.backgroundColor = "#191919";
-        }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 100);
+        }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50);
+        const offAutoMode = setTimeout(offSnakingColor = () => {
+            grid.style.backgroundColor = "white";
+        }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50 + 50);
     }
 }
 
