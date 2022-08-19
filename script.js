@@ -93,6 +93,9 @@ const addColorModeButtons = () => {
     colorModeButtons.forEach((button) => {
         button.addEventListener("click", () => {
             let newColorMode = button.getAttribute("id");
+            if (newColorMode === "auto-move") {
+                autoMove();
+            }
             if (colorMode !== newColorMode) {
                 colorMode = newColorMode;
                 if (newColorMode !== "auto-random"){
@@ -103,7 +106,7 @@ const addColorModeButtons = () => {
                 if (colorMode === "auto-random") {
                     autoRandom("on")
                 } else if (colorMode === "auto-move")  {
-                    console.log("test")
+                    autoMove();
                 }
             }
         })
