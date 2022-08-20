@@ -101,13 +101,13 @@ const addColorModeButtons = () => {
             if (colorMode !== newColorMode) {
                 colorMode = newColorMode;
                 if (newColorMode !== "auto-random"){
-                    autoRandom("off")
+                    autoRandom("off");
                 }
                 removeGrids();
                 createGrids();
                 if (colorMode === "auto-random") {
-                    autoRandom("on")
-                } else if (colorMode === "auto-move")  {
+                    autoRandom("on");
+                } else if (colorMode === "auto-move") {
                     autoMove();
                 }
             }
@@ -117,7 +117,7 @@ const addColorModeButtons = () => {
 
 const addColorOptions = () => {
     const colorContainer = document.querySelector(".color-container");
-    const genericColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "#191919", "white"]
+    const genericColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "#191919", "white"];
     genericColors.forEach((color) => {
         const colorOption = document.createElement("div");
         colorOption.classList.add("special-grid");
@@ -132,7 +132,7 @@ const addColorOptions = () => {
 const changeColor = (newColor) => {
     const grids = document.querySelectorAll(".grid");
     grids.forEach((grid) => {
-        grid.removeEventListener("mouseover", hoverGrid)
+        grid.removeEventListener("mouseover", hoverGrid);
         grid.addEventListener("mouseover", () => {
             grid.style.backgroundColor = newColor;
         })
@@ -178,7 +178,7 @@ toggleColorOptions();
 
 const autoRandom = (toggle) => {
     if (toggle === "on") {
-        autoMode = setInterval(changeRandomColors, 1000)
+        autoMode = setInterval(changeRandomColors, 1000);
     } else if (toggle === "off") {
         clearInterval(autoMode);
     }   
