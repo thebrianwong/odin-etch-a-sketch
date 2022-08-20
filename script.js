@@ -143,12 +143,12 @@ const toggleColorOptions = () => {
     const colorContainer = document.querySelector(".color-container");
     const freeDrawButton = document.querySelector("#free-draw");
     freeDrawButton.addEventListener("click", () => {
-        colorContainer.style.display = "flex";
+        colorContainer.style.visibility = "visible";
     })
     const nonFreeDrawButtons = document.querySelectorAll(".no-options");
     nonFreeDrawButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            colorContainer.style.display = "none";
+            colorContainer.style.visibility = "hidden";
         })
     })
 }
