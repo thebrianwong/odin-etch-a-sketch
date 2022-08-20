@@ -2,7 +2,7 @@ let gridNumber = 16;
 const gridContainerWidth = 672;
 const gridBorderWidth = 2;
 let colorMode = "free-draw";
-let autoMode;
+let autoModeTimer;
 
 const createGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
@@ -178,9 +178,9 @@ toggleColorOptions();
 
 const autoRandom = (toggle) => {
     if (toggle === "on") {
-        autoMode = setInterval(changeRandomColors, 1000);
+        autoModeTimer = setInterval(changeRandomColors, 1000);
     } else if (toggle === "off") {
-        clearInterval(autoMode);
+        clearInterval(autoModeTimer);
     }   
 }
 
@@ -188,19 +188,19 @@ const autoMove = () => {
     for (let i = 1; i <= gridNumber; i++) {
         if  (i % 2 !== 0) {
             for (let j = 1; j <= gridNumber; j++) {
-                if (autoMode !== null) {
-                    clearInterval(autoMode);
+                if (autoModeTimer !== null) {
+                    clearInterval(autoModeTimer);
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
-                autoMode = snakingGrid(activeGrid, i, j);
+                autoModeTimer = snakingGrid(activeGrid, i, j);
             }
         } else {
             for (let j = gridNumber; j > 0; j--) {
-                if (autoMode !== null) {
-                    clearInterval(autoMode);
+                if (autoModeTimer !== null) {
+                    clearInterval(autoModeTimer);
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
-                autoMode = snakingGrid(activeGrid, i, j);
+                autoModeTimer = snakingGrid(activeGrid, i, j);
             }
         }
     }
@@ -208,14 +208,14 @@ const autoMove = () => {
 
 const snakingGrid = (grid, row, column) => {
     if (row % 2 !== 0) {
-        autoMode = setTimeout(snakingColor = () => {
+        autoModeTimer = setTimeout(snakingColor = () => {
             grid.style.backgroundColor = "#191919";
         }, ((row - 1) * gridNumber + column) * 50);
         const offAutoMode = setTimeout(offSnakingColor = () => {
             grid.style.backgroundColor = "white";
         }, ((row - 1) * gridNumber + column) * 50 + 50);
     } else {
-        autoMode = setTimeout(snakingColor = () => {
+        autoModeTimer = setTimeout(snakingColor = () => {
             grid.style.backgroundColor = "#191919";
         }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50);
         const offAutoMode = setTimeout(offSnakingColor = () => {
