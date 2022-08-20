@@ -4,6 +4,10 @@ body {
     padding: 0;
 }
 
+p {
+    text-align: center;
+}
+
 .container,
 .left-container,
 .middle-container,
@@ -19,7 +23,7 @@ body {
 
 .container {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
