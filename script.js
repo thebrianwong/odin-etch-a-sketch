@@ -13,36 +13,36 @@ const createGrids = () => {
             grid.setAttribute("id", `grid-${i}-${j}`);
             adjustDimensions(grid);
             gridContainer.append(grid);
-            hoverGrid(grid);
+            hoverGrids(grid);
         }
     }
 }
 
-const hoverGrid = (element) => {
+const hoverGrids = (grid) => {
     switch (colorMode) {
         case "free-draw":
         default:
-            element.addEventListener("mouseover", () => {
-                element.classList.add("hover");
+            grid.addEventListener("mouseover", () => {
+                grid.classList.add("hover");
             })
             break;
         case "random":
-            element.addEventListener("mouseover", () => {
-                createRandomColors(element);
+            grid.addEventListener("mouseover", () => {
+                createRandomColors(grid);
             })
             break;
         case "monochrome":
-            element.addEventListener("mouseover", () => {
+            grid.addEventListener("mouseover", () => {
                 let randomColor = Math.floor(Math.random() * 255);
-                element.style.backgroundColor = `rgb(${randomColor}, ${randomColor}, ${randomColor})`;
+                grid.style.backgroundColor = `rgb(${randomColor}, ${randomColor}, ${randomColor})`;
             })            
             break;
         case "shade-in":
             let currentColor = 255;
-            element.addEventListener("mouseover", () => {
+            grid.addEventListener("mouseover", () => {
                 if (currentColor > 0) {
                     currentColor -= 25.5;
-                    element.style.backgroundColor = `rgb(${currentColor}, ${currentColor}, ${currentColor})`;
+                    grid.style.backgroundColor = `rgb(${currentColor}, ${currentColor}, ${currentColor})`;
                 }
             })
             break;
@@ -54,13 +54,13 @@ const hoverGrid = (element) => {
     }
 }
 
-const adjustDimensions = (element) => {
+const adjustDimensions = (grid) => {
     let newDimensions = gridContainerWidth / gridNumber - gridBorderWidth;
-    element.style.height = `${newDimensions}px`;
-    element.style.width = `${newDimensions}px`;
+    grid.style.height = `${newDimensions}px`;
+    grid.style.width = `${newDimensions}px`;
 }
 
-const changeGrid = () => {
+const changeGrids = () => {
     const button = document.querySelector(".change-number");
     button.addEventListener("click", () => {
         askForGrids();
@@ -69,7 +69,7 @@ const changeGrid = () => {
     })
 }
 
-const resetGrid = () => {
+const resetGrids = () => {
     const button = document.querySelector(".reset");
     button.addEventListener("click", () => {
         removeGrids();
@@ -132,7 +132,7 @@ const addColorOptions = () => {
 const changeColor = (newColor) => {
     const grids = document.querySelectorAll(".grid");
     grids.forEach((grid) => {
-        grid.removeEventListener("mouseover", hoverGrid);
+        grid.removeEventListener("mouseover", hoverGrids);
         grid.addEventListener("mouseover", () => {
             grid.style.backgroundColor = newColor;
         })
@@ -169,8 +169,8 @@ const createRandomColors = (grid) => {
 
 
 createGrids();
-changeGrid();
-resetGrid();
+changeGrids();
+resetGrids();
 addColorModeButtons();
 
 addColorOptions();
