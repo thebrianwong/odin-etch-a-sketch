@@ -11,9 +11,9 @@ const createGrids = () => {
             const grid = document.createElement("div");
             grid.classList.add("grid");
             grid.setAttribute("id", `grid-${i}-${j}`);
-            hoverGrid(grid);
             adjustDimensions(grid);
             gridContainer.append(grid);
+            hoverGrid(grid);
         }
     }
 }
