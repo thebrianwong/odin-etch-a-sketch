@@ -40,7 +40,6 @@ li {
 .container {
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
 }
 
 .left-container,
@@ -53,7 +52,9 @@ li {
 
 .left-container,
 .right-container {
+    height: fit-content;
     width: 500px;
+    margin: 175px 0;
 }
 
 .button-container {
