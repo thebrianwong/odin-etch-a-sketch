@@ -67,7 +67,7 @@ li {
 
 .grid-buttons,
 .color-buttons {
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 25px;
 }
 
