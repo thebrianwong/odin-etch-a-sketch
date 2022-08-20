@@ -40,8 +40,10 @@ const hoverGrid = (element) => {
         case "shade-in":
             let currentColor = 255;
             element.addEventListener("mouseover", () => {
-                currentColor -= 25.5;
-                element.style.backgroundColor = `rgb(${currentColor}, ${currentColor}, ${currentColor})`;
+                if (currentColor > 0) {
+                    currentColor -= 25.5;
+                    element.style.backgroundColor = `rgb(${currentColor}, ${currentColor}, ${currentColor})`;
+                }
             })
             break;
         case "auto-random":
