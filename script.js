@@ -5,7 +5,7 @@ let colorMode = "free-draw";
 let autoModeTimer;
 
 // Creates canvas of pixels using a nested array.
-const createGrids = () => {
+const createCanvas = () => {
     const gridContainer = document.querySelector(".grid-container");
     for (let i = 1; i <= gridNumber; i++) {
         for (let j = 1; j <= gridNumber; j++) {
@@ -69,8 +69,8 @@ const changeCanvasSize = () => {
     const button = document.querySelector(".change-number");
     button.addEventListener("click", () => {
         askForGrids();
-        removeGrids();
-        createGrids();
+        removeCanvas();
+        createCanvas();
     })
 }
 
@@ -78,8 +78,8 @@ const changeCanvasSize = () => {
 const resetCanvas = () => {
     const button = document.querySelector(".reset");
     button.addEventListener("click", () => {
-        removeGrids();
-        createGrids();
+        removeCanvas();
+        createCanvas();
     })
 }
 
@@ -93,7 +93,7 @@ const askForGrids = () => {
 }
 
 // Deletes the current canvas.
-const removeGrids = () => {
+const removeCanvas = () => {
     const gridContainer = document.querySelector(".grid-container");
     gridContainer.innerHTML = "";
 }
@@ -112,8 +112,8 @@ const addColorModeButtons = () => {
                 if (newColorMode !== "auto-random"){
                     toggleAutoRandomMode("off");
                 }
-                removeGrids();
-                createGrids();
+                removeCanvas();
+                createCanvas();
                 if (colorMode === "auto-random") {
                     toggleAutoRandomMode("on");
                 } else if (colorMode === "auto-move") {
@@ -223,7 +223,7 @@ const sendSnakingGrid = (grid, row, column) => {
     }
 }
 
-createGrids();
+createCanvas();
 changeCanvasSize();
 resetCanvas();
 addColorModeButtons();
