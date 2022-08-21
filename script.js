@@ -181,15 +181,6 @@ const createRandomColors = (grid) => {
     grid.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
-
-createGrids();
-changeCanvasSize();
-resetCanvas();
-addColorModeButtons();
-
-addColorOptions();
-toggleColorOptions();
-
 // Toggle auto random mode on or off.
 const toggleAutoRandomMode = (toggle) => {
     if (toggle === "on") {
@@ -231,3 +222,11 @@ const sendSnakingGrid = (grid, row, column) => {
         }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50 + 50);
     }
 }
+
+createGrids();
+changeCanvasSize();
+resetCanvas();
+addColorModeButtons();
+
+addColorOptions();
+toggleColorOptions();
