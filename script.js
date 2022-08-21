@@ -186,39 +186,30 @@ const toggleAutoRandomMode = (toggle) => {
 
 const enableAutoMoveMode = () => {
     for (let i = 1; i <= gridNumber; i++) {
-        if  (i % 2 !== 0) {
-            for (let j = 1; j <= gridNumber; j++) {
-                if (autoModeTimer !== null) {
-                    clearInterval(autoModeTimer);
-                }
-                const activeGrid = document.querySelector(`#grid-${i}-${j}`);
-                autoModeTimer = sendSnakingGrid(activeGrid, i, j);
+        for (let j = 1; j <= gridNumber; j++) {
+            if (autoModeTimer !== null) {
+                clearInterval(autoModeTimer);
             }
-        } else {
-            for (let j = gridNumber; j > 0; j--) {
-                if (autoModeTimer !== null) {
-                    clearInterval(autoModeTimer);
-                }
-                const activeGrid = document.querySelector(`#grid-${i}-${j}`);
-                autoModeTimer = sendSnakingGrid(activeGrid, i, j);
-            }
+            const activeGrid = document.querySelector(`#grid-${i}-${j}`);
+            console.log(`#grid-${i}-${j}`)
+            sendSnakingGrid(activeGrid, i, j);
         }
     }
 }
 
 const sendSnakingGrid = (grid, row, column) => {
     if (row % 2 !== 0) {
-        autoModeTimer = setTimeout(snakeLeftToRight = () => {
+        setTimeout(snakeLeftToRight = () => {
             grid.style.backgroundColor = "#191919";
         }, ((row - 1) * gridNumber + column) * 50);
-        const disableAutoMode = setTimeout(disableSnaking = () => {
+        setTimeout(disableSnaking = () => {
             grid.style.backgroundColor = "white";
         }, ((row - 1) * gridNumber + column) * 50 + 50);
     } else {
-        autoModeTimer = setTimeout(snakeRightToLeft = () => {
+        setTimeout(snakeRightToLeft = () => {
             grid.style.backgroundColor = "#191919";
         }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50);
-        const disableAutoMode = setTimeout(disableSnaking = () => {
+        setTimeout(disableSnaking = () => {
             grid.style.backgroundColor = "white";
         }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50 + 50);
     }
