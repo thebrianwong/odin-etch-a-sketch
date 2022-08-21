@@ -4,6 +4,8 @@ const gridBorderWidth = 2;
 let colorMode = "free-draw";
 let autoModeTimer;
 
+// CANVAS CREATION AND ALTERATION RELATED FUNCTIONS
+
 // Creates canvas of pixels using a nested array.
 const createCanvas = () => {
     const gridContainer = document.querySelector(".grid-container");
@@ -18,6 +20,50 @@ const createCanvas = () => {
         }
     }
 }
+
+// Changes the height and width of each grid when the user changes the number of pixels in each row and column.
+// Container width and border width are static, so the dimensions of each grid have to change to compensate.
+const adjustDimensions = (grid) => {
+    let newDimensions = gridContainerWidth / gridNumber - gridBorderWidth;
+    grid.style.height = `${newDimensions}px`;
+    grid.style.width = `${newDimensions}px`;
+}
+
+// Creates a new blank canvas when the user changes the number of pixels in each row and column.
+const changeCanvasSize = () => {
+    const button = document.querySelector(".change-number");
+    button.addEventListener("click", () => {
+        askForGrids();
+        removeCanvas();
+        createCanvas();
+    })
+}
+
+// Prompts the user to enter their desired new number of pixels.
+const askForGrids = () => {
+    let newGridNumber = 0;
+    do {
+        newGridNumber = Number(prompt("How many grids per side do you want? From 1 to 100."));
+    } while (newGridNumber < 1 || newGridNumber > 100)
+    gridNumber = newGridNumber;
+}
+
+// Resets the colors of the canvas.
+const resetCanvas = () => {
+    const button = document.querySelector(".reset");
+    button.addEventListener("click", () => {
+        removeCanvas();
+        createCanvas();
+    })
+}
+
+// Deletes the current canvas.
+const removeCanvas = () => {
+    const gridContainer = document.querySelector(".grid-container");
+    gridContainer.innerHTML = "";
+}
+
+// COLOR MODE RELATED FUNCTIONS
 
 // Changes the current mode based on the button clicked.
 const changeModes = (grid) => {
@@ -54,48 +100,6 @@ const changeModes = (grid) => {
         case "auto-move":
             break;
     }
-}
-
-// Changes the height and width of each grid when the user changes the number of pixels in each row and column.
-// Container width and border width are static, so the dimensions of each grid have to change to compensate.
-const adjustDimensions = (grid) => {
-    let newDimensions = gridContainerWidth / gridNumber - gridBorderWidth;
-    grid.style.height = `${newDimensions}px`;
-    grid.style.width = `${newDimensions}px`;
-}
-
-// Creates a new blank canvas when the user changes the number of pixels in each row and column.
-const changeCanvasSize = () => {
-    const button = document.querySelector(".change-number");
-    button.addEventListener("click", () => {
-        askForGrids();
-        removeCanvas();
-        createCanvas();
-    })
-}
-
-// Resets the colors of the canvas.
-const resetCanvas = () => {
-    const button = document.querySelector(".reset");
-    button.addEventListener("click", () => {
-        removeCanvas();
-        createCanvas();
-    })
-}
-
-// Prompts the user to enter their desired new number of pixels.
-const askForGrids = () => {
-    let newGridNumber = 0;
-    do {
-        newGridNumber = Number(prompt("How many grids per side do you want? From 1 to 100."));
-    } while (newGridNumber < 1 || newGridNumber > 100)
-    gridNumber = newGridNumber;
-}
-
-// Deletes the current canvas.
-const removeCanvas = () => {
-    const gridContainer = document.querySelector(".grid-container");
-    gridContainer.innerHTML = "";
 }
 
 // Enables color mode to change when a button is clicked.
@@ -180,6 +184,8 @@ const createRandomColors = (grid) => {
     let blue = Math.floor(Math.random() * 255);
     grid.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
+
+// AUTO MODE RELATED FUNCTIONS
 
 // Toggle auto random mode on or off.
 const toggleAutoRandomMode = (toggle) => {
