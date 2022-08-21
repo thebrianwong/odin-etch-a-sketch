@@ -1,6 +1,4 @@
 let gridNumber = 16;
-const gridContainerWidth = 672;
-const gridBorderWidth = 2;
 let colorMode = "free-draw";
 let autoModeTimer;
 
@@ -24,6 +22,8 @@ const createCanvas = () => {
 // Changes the height and width of each grid when the user changes the number of pixels in each row and column.
 // Container width and border width are static, so the dimensions of each grid have to change to compensate.
 const adjustDimensions = (grid) => {
+    const gridContainerWidth = 672;
+    const gridBorderWidth = 2;
     let newDimensions = gridContainerWidth / gridNumber - gridBorderWidth;
     grid.style.height = `${newDimensions}px`;
     grid.style.width = `${newDimensions}px`;
