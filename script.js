@@ -229,10 +229,12 @@ const sendSnakingGrid = (grid, row, column) => {
     }
 }
 
+// Initializes canvas and canvas related buttons.
 createCanvas();
 changeCanvasSize();
 resetCanvas();
-addColorModeButtons();
 
+// Initializes color and auto mode related functionalities.
+addColorModeButtons();
 addColorOptions();
 toggleColorOptions();
