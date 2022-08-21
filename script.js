@@ -4,6 +4,7 @@ const gridBorderWidth = 2;
 let colorMode = "free-draw";
 let autoModeTimer;
 
+// Creates canvas of pixels using a nested array.
 const createGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
     for (let i = 1; i <= gridNumber; i++) {
@@ -18,6 +19,7 @@ const createGrids = () => {
     }
 }
 
+// Changes the current mode based on the button clicked.
 const changeModes = (grid) => {
     switch (colorMode) {
         case "free-draw":
@@ -54,12 +56,15 @@ const changeModes = (grid) => {
     }
 }
 
+// Changes the height and width of each grid when the user changes the number of pixels in each row and column.
+// Container width and border width are static, so the dimensions of each grid have to change to compensate.
 const adjustDimensions = (grid) => {
     let newDimensions = gridContainerWidth / gridNumber - gridBorderWidth;
     grid.style.height = `${newDimensions}px`;
     grid.style.width = `${newDimensions}px`;
 }
 
+// Creates a new blank canvas when the user changes the number of pixels in each row and column.
 const changeCanvasSize = () => {
     const button = document.querySelector(".change-number");
     button.addEventListener("click", () => {
@@ -69,6 +74,7 @@ const changeCanvasSize = () => {
     })
 }
 
+// Resets the colors of the canvas.
 const resetCanvas = () => {
     const button = document.querySelector(".reset");
     button.addEventListener("click", () => {
@@ -77,6 +83,7 @@ const resetCanvas = () => {
     })
 }
 
+// Prompts the user to enter their desired new number of pixels.
 const askForGrids = () => {
     let newGridNumber = 0;
     do {
@@ -85,11 +92,13 @@ const askForGrids = () => {
     gridNumber = newGridNumber;
 }
 
+// Deletes the current canvas.
 const removeGrids = () => {
     const gridContainer = document.querySelector(".grid-container");
     gridContainer.innerHTML = "";
 }
 
+// Enables color mode to change when a button is clicked.
 const addColorModeButtons = () => {
     let colorModeButtons = document.querySelectorAll(".color-mode");
     colorModeButtons.forEach((button) => {
@@ -115,6 +124,7 @@ const addColorModeButtons = () => {
     })
 }
 
+// Creates color palette options for free draw mode.
 const addColorOptions = () => {
     const colorContainer = document.querySelector(".color-container");
     const genericColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "#191919", "white"];
@@ -129,6 +139,7 @@ const addColorOptions = () => {
     })
 }
 
+// Changes paint color in free draw mode when clicking a color palette option.
 const changePaintColor = (newColor) => {
     const grids = document.querySelectorAll(".grid");
     grids.forEach((grid) => {
@@ -139,6 +150,7 @@ const changePaintColor = (newColor) => {
     })
 }
 
+// Shows and hides color palette options depending if in free draw mode or not.
 const toggleColorOptions = () => {
     const colorContainer = document.querySelector(".color-container");
     const freeDrawButton = document.querySelector("#free-draw");
@@ -153,6 +165,7 @@ const toggleColorOptions = () => {
     })
 }
 
+// Selects canvas pixels to create random colors.
 const selectForRandomColors = () => {
     const grids = document.querySelectorAll(".grid");
     grids.forEach((grid) => {
@@ -160,6 +173,7 @@ const selectForRandomColors = () => {
     })
 }
 
+// Creates random colors for the target pixel.
 const createRandomColors = (grid) => {
     let red = Math.floor(Math.random() * 255);
     let green = Math.floor(Math.random() * 255);
@@ -176,6 +190,7 @@ addColorModeButtons();
 addColorOptions();
 toggleColorOptions();
 
+// Toggle auto random mode on or off.
 const toggleAutoRandomMode = (toggle) => {
     if (toggle === "on") {
         autoModeTimer = setInterval(selectForRandomColors, 1000);
@@ -184,6 +199,7 @@ const toggleAutoRandomMode = (toggle) => {
     }   
 }
 
+// Enable auto move mode timers for each pixel.
 const enableAutoMoveMode = () => {
     for (let i = 1; i <= gridNumber; i++) {
         for (let j = 1; j <= gridNumber; j++) {
@@ -197,6 +213,7 @@ const enableAutoMoveMode = () => {
     }
 }
 
+// Creates a snaking pattern by setting timers to turn each pixel "on and off" (black then white).
 const sendSnakingGrid = (grid, row, column) => {
     if (row % 2 !== 0) {
         setTimeout(snakeLeftToRight = () => {
