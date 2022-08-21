@@ -13,12 +13,12 @@ const createGrids = () => {
             grid.setAttribute("id", `grid-${i}-${j}`);
             adjustDimensions(grid);
             gridContainer.append(grid);
-            hoverGrids(grid);
+            changeModes(grid);
         }
     }
 }
 
-const hoverGrids = (grid) => {
+const changeModes = (grid) => {
     switch (colorMode) {
         case "free-draw":
         default:
@@ -47,7 +47,7 @@ const hoverGrids = (grid) => {
             })
             break;
         case "auto-random":
-            changeRandomColors();
+            selectForRandomColors();
             break;
         case "auto-move":
             break;
@@ -60,7 +60,7 @@ const adjustDimensions = (grid) => {
     grid.style.width = `${newDimensions}px`;
 }
 
-const changeGrids = () => {
+const changeCanvasSize = () => {
     const button = document.querySelector(".change-number");
     button.addEventListener("click", () => {
         askForGrids();
@@ -69,7 +69,7 @@ const changeGrids = () => {
     })
 }
 
-const resetGrids = () => {
+const resetCanvas = () => {
     const button = document.querySelector(".reset");
     button.addEventListener("click", () => {
         removeGrids();
@@ -96,19 +96,19 @@ const addColorModeButtons = () => {
         button.addEventListener("click", () => {
             let newColorMode = button.getAttribute("id");
             if (newColorMode === "auto-move") {
-                autoMove();
+                enableAutoMoveMode();
             }
             if (colorMode !== newColorMode) {
                 colorMode = newColorMode;
                 if (newColorMode !== "auto-random"){
-                    autoRandom("off");
+                    toggleAutoRandomMode("off");
                 }
                 removeGrids();
                 createGrids();
                 if (colorMode === "auto-random") {
-                    autoRandom("on");
+                    toggleAutoRandomMode("on");
                 } else if (colorMode === "auto-move") {
-                    autoMove();
+                    enableAutoMoveMode();
                 }
             }
         })
@@ -123,16 +123,16 @@ const addColorOptions = () => {
         colorOption.classList.add("special-grid");
         colorOption.style.backgroundColor = color;
         colorOption.addEventListener("click", () => {
-            changeColor(color);
+            changePaintColor(color);
         })
         colorContainer.append(colorOption);
     })
 }
 
-const changeColor = (newColor) => {
+const changePaintColor = (newColor) => {
     const grids = document.querySelectorAll(".grid");
     grids.forEach((grid) => {
-        grid.removeEventListener("mouseover", hoverGrids);
+        grid.removeEventListener("mouseover", changeModes);
         grid.addEventListener("mouseover", () => {
             grid.style.backgroundColor = newColor;
         })
@@ -153,7 +153,7 @@ const toggleColorOptions = () => {
     })
 }
 
-const changeRandomColors = () => {
+const selectForRandomColors = () => {
     const grids = document.querySelectorAll(".grid");
     grids.forEach((grid) => {
         createRandomColors(grid);
@@ -169,22 +169,22 @@ const createRandomColors = (grid) => {
 
 
 createGrids();
-changeGrids();
-resetGrids();
+changeCanvasSize();
+resetCanvas();
 addColorModeButtons();
 
 addColorOptions();
 toggleColorOptions();
 
-const autoRandom = (toggle) => {
+const toggleAutoRandomMode = (toggle) => {
     if (toggle === "on") {
-        autoModeTimer = setInterval(changeRandomColors, 1000);
+        autoModeTimer = setInterval(selectForRandomColors, 1000);
     } else if (toggle === "off") {
         clearInterval(autoModeTimer);
     }   
 }
 
-const autoMove = () => {
+const enableAutoMoveMode = () => {
     for (let i = 1; i <= gridNumber; i++) {
         if  (i % 2 !== 0) {
             for (let j = 1; j <= gridNumber; j++) {
@@ -192,7 +192,7 @@ const autoMove = () => {
                     clearInterval(autoModeTimer);
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
-                autoModeTimer = snakingGrid(activeGrid, i, j);
+                autoModeTimer = sendSnakingGrid(activeGrid, i, j);
             }
         } else {
             for (let j = gridNumber; j > 0; j--) {
@@ -200,25 +200,25 @@ const autoMove = () => {
                     clearInterval(autoModeTimer);
                 }
                 const activeGrid = document.querySelector(`#grid-${i}-${j}`);
-                autoModeTimer = snakingGrid(activeGrid, i, j);
+                autoModeTimer = sendSnakingGrid(activeGrid, i, j);
             }
         }
     }
 }
 
-const snakingGrid = (grid, row, column) => {
+const sendSnakingGrid = (grid, row, column) => {
     if (row % 2 !== 0) {
-        autoModeTimer = setTimeout(snakingColor = () => {
+        autoModeTimer = setTimeout(snakeLeftToRight = () => {
             grid.style.backgroundColor = "#191919";
         }, ((row - 1) * gridNumber + column) * 50);
-        const offAutoMode = setTimeout(offSnakingColor = () => {
+        const disableAutoMode = setTimeout(disableSnaking = () => {
             grid.style.backgroundColor = "white";
         }, ((row - 1) * gridNumber + column) * 50 + 50);
     } else {
-        autoModeTimer = setTimeout(snakingColor = () => {
+        autoModeTimer = setTimeout(snakeRightToLeft = () => {
             grid.style.backgroundColor = "#191919";
         }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50);
-        const offAutoMode = setTimeout(offSnakingColor = () => {
+        const disableAutoMode = setTimeout(disableSnaking = () => {
             grid.style.backgroundColor = "white";
         }, ((row - 1) * gridNumber + ((gridNumber + 1) - column)) * 50 + 50);
     }
